@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lens — Slides</title>
+<style>
+  :root {
+    --bg: #1a1a18;
+    --bg2: #242420;
+    --border: #333330;
+    --text: #eeeae0;
+    --text2: #a8a49c;
+    --accent: #a8c0e8;
+    --green: #7ec8a0;
+    --yellow: #e8d4a0;
+    --red: #e8a0a0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Progress bar ── */
+  #progress-bar {
+    height: 2px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  #progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  /* ── Slide area ── */
+  #slide-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 60px;
+    overflow: hidden;
+  }
+
+  .slide {
+    display: none;
+    max-width: 860px;
+    width: 100%;
+    animation: fadeIn 0.2s ease;
+  }
+  .slide.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── Slide types ── */
+  .slide-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-bottom: 20px;
+  }
+
+  .slide h1 {
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .slide h2 {
+    font-size: 1.9rem;
+    font-weight: 300;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+
+  .slide .subtitle {
+    font-size: 0.85rem;
+    color: var(--text2);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Bullets ── */
+  .bullets { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+  .bullets li {
+    font-size: 1.05rem;
+    color: var(--text2);
+    line-height: 1.55;
+    padding-left: 20px;
+    position: relative;
+  }
+  .bullets li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--border);
+  }
+  .bullets li strong { color: var(--text); font-weight: 500; }
+  .bullets li .accent { color: var(--accent); }
+  .bullets li .green { color: var(--green); }
+  .bullets li .yellow { color: var(--yellow); }
+  .bullets li .red { color: var(--red); }
+
+  /* ── Table ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 8px;
+  }
+  th {
+    text-align: left;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+  }
+  td:first-child { color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+  .weak { color: var(--red) !important; }
+  .strong { color: var(--green) !important; }
+
+  /* ── Two-col layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .col-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+  }
+
+  /* ── Highlight box ── */
+  .highlight-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 2px;
+    margin-top: 24px;
+    font-size: 1rem;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .highlight-box strong { color: var(--text); }
+
+  /* ── Pipeline diagram ── */
+  .pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .pipeline-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pipeline-step:last-child { border-bottom: none; }
+  .step-num {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    min-width: 28px;
+    padding-top: 2px;
+  }
+  .step-title {
+    font-size: 0.95rem;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .step-desc {
+    font-size: 0.82rem;
+    color: var(--text2);
+    line-height: 1.55;
+  }
+
+  /* ── Controls ── */
+  #controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px 18px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  #slide-counter {
+    font-size: 0.65rem;
+    color: var(--text2);
+    letter-spacing: 0.06em;
+    font-family: "Inter", monospace;
+  }
+
+  .nav-btns { display: flex; gap: 10px; }
+
+  button {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    padding: 7px 18px;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  button:hover { color: var(--text); border-color: var(--text2); }
+  button:disabled { opacity: 0.3; cursor: default; }
+
+  #hint {
+    font-size: 0.6rem;
+    color: var(--text2);
+    letter-spacing: 0.04em;
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"><div id="progress-fill"></div></div>
+
+<div id="slide-area">
+
+  <!-- 1. Title -->
+  <div class="slide active" id="s1">
+    <div class="slide-label">Lens — Error Analysis for Image Classifiers</div>
+    <h1>What's Actually Wrong With Your Model</h1>
+    <p class="subtitle">Akarsh Upadhyay &nbsp;·&nbsp; May 2026</p>
+  </div>
+
+  <!-- 2. The problem -->
+  <div class="slide" id="s2">
+    <div class="slide-label">The Problem</div>
+    <h2>Standard model debugging doesn't tell you much</h2>
+    <ul class="bullets">
+      <li>You train, you check accuracy, you look at a confusion matrix</li>
+      <li>Model underperforms → try more epochs, different LR, different architecture</li>
+      <li>You're guessing at the root cause rather than reading it from the data</li>
+      <li><strong>The core issue:</strong> not all failures are the same kind of problem — and they need completely different fixes</li>
+    </ul>
+  </div>
+
+  <!-- 3. Three kinds of failures -->
+  <div class="slide" id="s3">
+    <div class="slide-label">The Problem</div>
+    <h2>Three kinds of failures — three different fixes</h2>
+    <ul class="bullets">
+      <li><strong class="yellow">Data quality</strong> — mislabeled or ambiguous image, a human would also get it wrong → <span class="yellow">fix the data</span></li>
+      <li><strong class="accent">Visual gap</strong> — the model hasn't seen this visual pattern during training → <span class="accent">fix with augmentation</span></li>
+      <li><strong class="red">Hard task</strong> — genuinely ambiguous for this architecture → <span class="red">accept it or change the model</span></li>
+    </ul>
+    <div class="highlight-box">Treating all three the same wastes time on the wrong fix. If 56% of your failures are data quality issues, more training doesn't help.</div>
+  </div>
+
+  <!-- 4. What Lens does -->
+  <div class="slide" id="s4">
+    <div class="slide-label">The Approach</div>
+    <h2>Lens — structured per-failure analysis</h2>
+    <div class="pipeline">
+      <div class="pipeline-step">
+        <div class="step-num">01</div>
+        <div><div class="step-title">Train and collect failures</div><div class="step-desc">Fine-tune model, save every misclassification with top-3 predictions and confidence</div></div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">02</div>
+        <div><div class="step-title">Generate hypothesis per failure</div><div class="step-desc">Send each failure image to a local VLM. Ask: data issue? visual cause? suggested fix?</div></div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">03</div>
+        <div><div class="step-title">Cluster each dimension independently</div><div class="step-desc">Embed and cluster data issues, visual causes, and fixes as separate axes — not one blob</div></div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">04</div>
+        <div><div class="step-title">Human review</div><div class="step-desc">Annotator pages through failures, records agree/disagree, sees cluster summaries on a dashboard</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Setup -->
+  <div class="slide" id="s5">
+    <div class="slide-label">Setup</div>
+    <h2>CIFAR-10 ResNet-18 baseline</h2>
+    <ul class="bullets">
+      <li><strong>Model:</strong> ResNet-18 (ImageNet pretrained), FC replaced for 10 classes, 3 epochs, no augmentation</li>
+      <li><strong>VLM:</strong> qwen3-vl:8b via Ollama — runs locally, no external API calls</li>
+      <li><strong>Sample:</strong> 150 failures sampled for analysis (15 per class)</li>
+      <li><strong>Embeddings:</strong> BAAI/bge-base-en-v1.5 + KMeans, k=15–30 with silhouette selection</li>
+      <li><strong>Stack:</strong> PyTorch · Ollama · SentenceTransformers · scikit-learn · FastAPI</li>
+    </ul>
+  </div>
+
+  <!-- 6. Per-class results -->
+  <div class="slide" id="s6">
+    <div class="slide-label">Findings</div>
+    <h2>Per-class results — cat and dog are the problem</h2>
+    <table>
+      <thead><tr><th>Class</th><th>F1</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>ship</td><td>88.2%</td><td class="strong">▲</td></tr>
+        <tr><td>automobile</td><td>87.3%</td><td class="strong">▲</td></tr>
+        <tr><td>truck</td><td>84.5%</td><td></td></tr>
+        <tr><td>frog</td><td>84.2%</td><td></td></tr>
+        <tr><td>airplane</td><td>82.5%</td><td></td></tr>
+        <tr><td>horse</td><td>82.5%</td><td></td></tr>
+        <tr><td>deer</td><td>75.5%</td><td></td></tr>
+        <tr><td>bird</td><td>73.4%</td><td></td></tr>
+        <tr><td>dog</td><td class="weak">70.0%</td><td class="weak">▼</td></tr>
+        <tr><td>cat</td><td class="weak">61.9%</td><td class="weak">▼▼</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 7. Is it overfitting? -->
+  <div class="slide" id="s7">
+    <div class="slide-label">Findings</div>
+    <h2>Val loss rises for cat/dog — but it's not overfitting</h2>
+    <ul class="bullets">
+      <li>Cat and dog val loss rises after epoch 2 — looks like a training problem</li>
+      <li>Tried: dropout on FC layer → accuracy dropped</li>
+      <li>Tried: two-phase training (freeze backbone, then unfreeze) → accuracy dropped further</li>
+      <li>Tried: lower backbone LR → same result</li>
+      <li><strong>Conclusion:</strong> the val loss rise is boundary ambiguity in the dataset — the model is doing about as well as it can on these images</li>
+    </ul>
+    <div class="highlight-box">This is exactly the kind of insight you want before spending a week on training experiments. The problem is the data, not the training.</div>
+  </div>
+
+  <!-- 8. Data quality -->
+  <div class="slide" id="s8">
+    <div class="slide-label">Findings</div>
+    <h2>56% of failures are data quality issues</h2>
+    <div class="two-col">
+      <div>
+        <div class="col-label">Data issue breakdown (84 / 150)</div>
+        <ul class="bullets">
+          <li><strong class="yellow">68 ambiguous images</strong> — cropping removes key features, background texture bleed, images a human would also get wrong</li>
+          <li><strong class="red">16 labeling errors</strong> — outright wrong labels</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-label">What this means</div>
+        <ul class="bullets">
+          <li>16 mislabeled per 150 failures is a high rate</li>
+          <li>Cleaning the dataset will move accuracy more reliably than any training change</li>
+          <li>The 68 ambiguous images are harder — some may just need to be accepted</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Visual cause clusters -->
+  <div class="slide" id="s9">
+    <div class="slide-label">Findings</div>
+    <h2>Visual cause clusters — specific, not generic</h2>
+    <table>
+      <thead><tr><th>Cluster</th><th>Failures</th><th>Pattern</th></tr></thead>
+      <tbody>
+        <tr><td>Partial occlusion</td><td>14</td><td class="text2">Dark foreground objects hiding discriminative features</td></tr>
+        <tr><td>Background texture match</td><td>9</td><td class="text2">Background texture matches object texture closely</td></tr>
+        <tr><td>Crop mimics other class</td><td>8</td><td class="text2">Ship hull cropped to expose only lower portion — looks like airplane underside</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box">These cluster labels aren't "model confused cat and dog" — they describe a <strong>visual mechanism</strong>. You can write targeted test cases for each one.</div>
+  </div>
+
+  <!-- 10. Fix clusters -->
+  <div class="slide" id="s10">
+    <div class="slide-label">Findings</div>
+    <h2>Fix clusters — specific augmentations to try</h2>
+    <table>
+      <thead><tr><th>Fix cluster</th><th>Failures</th></tr></thead>
+      <tbody>
+        <tr><td>Partial head occlusion augmentation</td><td>10</td></tr>
+        <tr><td>Tail section crop augmentation</td><td>7</td></tr>
+        <tr><td>Background texture augmentation (color jitter + texture)</td><td>7</td></tr>
+      </tbody>
+    </table>
+    <ul class="bullets" style="margin-top: 28px;">
+      <li>These aren't "try more augmentation" — they're specific to the failure mode</li>
+      <li>Next step: train iteration 2 with these augmentations, compare per-class F1 against baseline</li>
+    </ul>
+  </div>
+
+  <!-- 11. Production use -->
+  <div class="slide" id="s11">
+    <div class="slide-label">Production Use</div>
+    <h2>How this fits into a real deployment loop</h2>
+    <div class="pipeline">
+      <div class="pipeline-step">
+        <div class="step-num">→</div>
+        <div><div class="step-title">annotation_issue tag</div><div class="step-desc">Immediately queue for relabeling — no additional analysis needed. These are clearly wrong labels.</div></div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">→</div>
+        <div><div class="step-title">Fix clusters</div><div class="step-desc">Input to augmentation strategy for the next training iteration. Specific, not generic.</div></div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">→</div>
+        <div><div class="step-title">Visual cause clusters</div><div class="step-desc">Write targeted eval suites for known failure modes. If "partial occlusion" is a cluster, construct test cases that stress it.</div></div>
+      </div>
+      <div class="pipeline-step">
+        <div class="step-num">→</div>
+        <div><div class="step-title">Cadence</div><div class="step-desc">Sample N failures per class after each deployment. Run analysis, re-cluster periodically — daily or after each model update.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Improvements -->
+  <div class="slide" id="s12">
+    <div class="slide-label">What's Next</div>
+    <h2>Planned improvements</h2>
+    <ul class="bullets">
+      <li><strong>Iteration 2 training</strong> — run with head occlusion, background texture, crop augmentations; compare per-class F1 vs baseline</li>
+      <li><strong>Use human review verdicts</strong> — filter noisy hypotheses before clustering; weight clusters by reviewer confidence</li>
+      <li><strong>Cross-run comparison view</strong> — side-by-side cluster diff between baseline and iteration 2</li>
+      <li><strong>Dataset agnostic</strong> — decouple from CIFAR-10/ResNet-18; works on any dataset + model that outputs a failure set</li>
+      <li><strong>Investigate the 16 labeling errors</strong> — candidates for relabeling or removal from the training set</li>
+    </ul>
+  </div>
+
+  <!-- 13. Summary -->
+  <div class="slide" id="s13">
+    <div class="slide-label">Summary</div>
+    <h2>Key takeaways</h2>
+    <ul class="bullets">
+      <li>A structured hypothesis per failure (data / visual / fix) is more useful than aggregate metrics alone</li>
+      <li>Clustering those hypotheses on each axis independently surfaces patterns you can act on directly</li>
+      <li><strong>56% of failures were data quality issues</strong> — that's where the leverage is, not more training epochs</li>
+      <li>The analysis takes ~15 min to run locally on 150 failures; the output tells you exactly what to fix next</li>
+    </ul>
+    <div class="highlight-box" style="margin-top: 32px;">Code and experiment results: <strong>github.com/akarshupadhyay/lens</strong> &nbsp;·&nbsp; Blog post: <strong>akarshupadhyay.com/writing</strong></div>
+  </div>
+
+</div><!-- /slide-area -->
+
+<div id="controls">
+  <div id="hint">← → arrow keys or buttons to navigate</div>
+  <div id="slide-counter">1 / 13</div>
+  <div class="nav-btns">
+    <button id="btn-prev" onclick="nav(-1)" disabled>← Prev</button>
+    <button id="btn-next" onclick="nav(1)">Next →</button>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let cur = 0;
+
+  function show(i) {
+    slides[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(total - 1, i));
+    slides[cur].classList.add('active');
+    document.getElementById('slide-counter').textContent = `${cur + 1} / ${total}`;
+    document.getElementById('btn-prev').disabled = cur === 0;
+    document.getElementById('btn-next').disabled = cur === total - 1;
+    document.getElementById('progress-fill').style.width = `${((cur + 1) / total) * 100}%`;
+  }
+
+  function nav(dir) { show(cur + dir); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nav(1); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); nav(-1); }
+  });
+
+  show(0);
+</script>
+
+</body>
+</html>

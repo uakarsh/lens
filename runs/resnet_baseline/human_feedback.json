@@ -3,5 +3,15 @@
     "image_idx": 9784,
     "verdict": "disagree",
     "human_hypothesis": ""
+  },
+  "1685": {
+    "image_idx": 1685,
+    "verdict": "disagree",
+    "human_hypothesis": "hallucination, there is no uniform blue"
+  },
+  "8653": {
+    "image_idx": 8653,
+    "verdict": "disagree",
+    "human_hypothesis": ""
   }
 }
