@@ -1,0 +1,418 @@
+{
+  "cifar_baseline": {
+    "experiment_id": "cifar_baseline",
+    "dataset": "cifar10",
+    "total_failures": 2498,
+    "failure_rate": 0.2498,
+    "per_class_accuracy": {
+      "airplane": 0.801,
+      "automobile": 0.917,
+      "bird": 0.55,
+      "cat": 0.544,
+      "deer": 0.658,
+      "dog": 0.693,
+      "frog": 0.821,
+      "horse": 0.796,
+      "ship": 0.844,
+      "truck": 0.878
+    },
+    "top_confused_pairs": [
+      {
+        "true": "cat",
+        "predicted": "dog",
+        "count": 227
+      },
+      {
+        "true": "dog",
+        "predicted": "cat",
+        "count": 155
+      },
+      {
+        "true": "deer",
+        "predicted": "horse",
+        "count": 99
+      },
+      {
+        "true": "bird",
+        "predicted": "dog",
+        "count": 98
+      },
+      {
+        "true": "bird",
+        "predicted": "deer",
+        "count": 98
+      }
+    ],
+    "run_dir": "runs/cifar_baseline"
+  },
+  "cifar_augmented": {
+    "experiment_id": "cifar_augmented",
+    "dataset": "cifar10",
+    "total_failures": 3249,
+    "failure_rate": 0.3249,
+    "per_class_accuracy": {
+      "airplane": 0.746,
+      "automobile": 0.877,
+      "bird": 0.414,
+      "cat": 0.398,
+      "deer": 0.509,
+      "dog": 0.639,
+      "frog": 0.794,
+      "horse": 0.669,
+      "ship": 0.864,
+      "truck": 0.841
+    },
+    "top_confused_pairs": [
+      {
+        "true": "cat",
+        "predicted": "dog",
+        "count": 277
+      },
+      {
+        "true": "dog",
+        "predicted": "cat",
+        "count": 169
+      },
+      {
+        "true": "horse",
+        "predicted": "dog",
+        "count": 151
+      },
+      {
+        "true": "deer",
+        "predicted": "frog",
+        "count": 148
+      },
+      {
+        "true": "cat",
+        "predicted": "frog",
+        "count": 132
+      }
+    ],
+    "run_dir": "runs/cifar_augmented"
+  },
+  "cifar_augmented_v2": {
+    "experiment_id": "cifar_augmented_v2",
+    "dataset": "cifar10",
+    "total_failures": 3237,
+    "failure_rate": 0.3237,
+    "per_class_accuracy": {
+      "airplane": 0.689,
+      "automobile": 0.889,
+      "bird": 0.436,
+      "cat": 0.332,
+      "deer": 0.556,
+      "dog": 0.673,
+      "frog": 0.751,
+      "horse": 0.753,
+      "ship": 0.815,
+      "truck": 0.869
+    },
+    "top_confused_pairs": [
+      {
+        "true": "cat",
+        "predicted": "dog",
+        "count": 368
+      },
+      {
+        "true": "bird",
+        "predicted": "deer",
+        "count": 142
+      },
+      {
+        "true": "deer",
+        "predicted": "horse",
+        "count": 135
+      },
+      {
+        "true": "bird",
+        "predicted": "dog",
+        "count": 135
+      },
+      {
+        "true": "dog",
+        "predicted": "cat",
+        "count": 120
+      }
+    ],
+    "run_dir": "runs/cifar_augmented_v2"
+  },
+  "cifar_baseline_v2": {
+    "experiment_id": "cifar_baseline_v2",
+    "dataset": "cifar10",
+    "total_failures": 2738,
+    "failure_rate": 0.2738,
+    "per_class_accuracy": {
+      "airplane": 0.78,
+      "automobile": 0.901,
+      "bird": 0.491,
+      "cat": 0.455,
+      "deer": 0.665,
+      "dog": 0.694,
+      "frog": 0.81,
+      "horse": 0.744,
+      "ship": 0.848,
+      "truck": 0.874
+    },
+    "top_confused_pairs": [
+      {
+        "true": "cat",
+        "predicted": "dog",
+        "count": 287
+      },
+      {
+        "true": "dog",
+        "predicted": "cat",
+        "count": 165
+      },
+      {
+        "true": "horse",
+        "predicted": "dog",
+        "count": 126
+      },
+      {
+        "true": "bird",
+        "predicted": "dog",
+        "count": 115
+      },
+      {
+        "true": "bird",
+        "predicted": "deer",
+        "count": 104
+      }
+    ],
+    "run_dir": "runs/cifar_baseline_v2"
+  },
+  "cifar_baseline_v3": {
+    "experiment_id": "cifar_baseline_v3",
+    "dataset": "cifar10",
+    "total_failures": 2643,
+    "failure_rate": 0.2643,
+    "per_class_accuracy": {
+      "airplane": 0.776,
+      "automobile": 0.841,
+      "bird": 0.545,
+      "cat": 0.544,
+      "deer": 0.655,
+      "dog": 0.629,
+      "frog": 0.835,
+      "horse": 0.797,
+      "ship": 0.85,
+      "truck": 0.885
+    },
+    "top_confused_pairs": [
+      {
+        "true": "cat",
+        "predicted": "dog",
+        "count": 204
+      },
+      {
+        "true": "dog",
+        "predicted": "cat",
+        "count": 193
+      },
+      {
+        "true": "bird",
+        "predicted": "deer",
+        "count": 109
+      },
+      {
+        "true": "automobile",
+        "predicted": "truck",
+        "count": 109
+      },
+      {
+        "true": "deer",
+        "predicted": "horse",
+        "count": 99
+      }
+    ],
+    "run_dir": "runs/cifar_baseline_v3"
+  },
+  "cifar_augmented_v3": {
+    "experiment_id": "cifar_augmented_v3",
+    "dataset": "cifar10",
+    "total_failures": 3271,
+    "failure_rate": 0.3271,
+    "per_class_accuracy": {
+      "airplane": 0.702,
+      "automobile": 0.908,
+      "bird": 0.422,
+      "cat": 0.314,
+      "deer": 0.53,
+      "dog": 0.667,
+      "frog": 0.773,
+      "horse": 0.743,
+      "ship": 0.822,
+      "truck": 0.848
+    },
+    "top_confused_pairs": [
+      {
+        "true": "cat",
+        "predicted": "dog",
+        "count": 353
+      },
+      {
+        "true": "deer",
+        "predicted": "horse",
+        "count": 143
+      },
+      {
+        "true": "dog",
+        "predicted": "cat",
+        "count": 129
+      },
+      {
+        "true": "bird",
+        "predicted": "deer",
+        "count": 124
+      },
+      {
+        "true": "bird",
+        "predicted": "dog",
+        "count": 122
+      }
+    ],
+    "run_dir": "runs/cifar_augmented_v3"
+  },
+  "cifar_class_cond_v2": {
+    "experiment_id": "cifar_class_cond_v2",
+    "dataset": "cifar10",
+    "total_failures": 3034,
+    "failure_rate": 0.3034,
+    "per_class_accuracy": {
+      "airplane": 0.658,
+      "automobile": 0.871,
+      "bird": 0.551,
+      "cat": 0.289,
+      "deer": 0.585,
+      "dog": 0.705,
+      "frog": 0.832,
+      "horse": 0.744,
+      "ship": 0.861,
+      "truck": 0.87
+    },
+    "top_confused_pairs": [
+      {
+        "true": "cat",
+        "predicted": "dog",
+        "count": 387
+      },
+      {
+        "true": "deer",
+        "predicted": "bird",
+        "count": 120
+      },
+      {
+        "true": "cat",
+        "predicted": "frog",
+        "count": 111
+      },
+      {
+        "true": "airplane",
+        "predicted": "ship",
+        "count": 107
+      },
+      {
+        "true": "dog",
+        "predicted": "cat",
+        "count": 106
+      }
+    ],
+    "run_dir": "runs/cifar_class_cond_v2"
+  },
+  "cifar_baseline_25ep": {
+    "experiment_id": "cifar_baseline_25ep",
+    "dataset": "cifar10",
+    "total_failures": 1341,
+    "failure_rate": 0.1341,
+    "per_class_accuracy": {
+      "airplane": 0.883,
+      "automobile": 0.934,
+      "bird": 0.79,
+      "cat": 0.715,
+      "deer": 0.865,
+      "dog": 0.808,
+      "frog": 0.913,
+      "horse": 0.89,
+      "ship": 0.934,
+      "truck": 0.927
+    },
+    "top_confused_pairs": [
+      {
+        "true": "cat",
+        "predicted": "dog",
+        "count": 130
+      },
+      {
+        "true": "dog",
+        "predicted": "cat",
+        "count": 96
+      },
+      {
+        "true": "bird",
+        "predicted": "deer",
+        "count": 48
+      },
+      {
+        "true": "automobile",
+        "predicted": "truck",
+        "count": 42
+      },
+      {
+        "true": "bird",
+        "predicted": "airplane",
+        "count": 39
+      }
+    ],
+    "run_dir": "runs/cifar_baseline_25ep"
+  },
+  "resnet_baseline": {
+    "experiment_id": "resnet_baseline",
+    "dataset": "cifar10_resnet",
+    "total_failures": 150,
+    "failure_rate": 0.015,
+    "per_class_accuracy": {
+      "airplane": 0.818,
+      "automobile": 0.881,
+      "bird": 0.711,
+      "cat": 0.619,
+      "deer": 0.772,
+      "dog": 0.692,
+      "frog": 0.871,
+      "horse": 0.808,
+      "ship": 0.897,
+      "truck": 0.834
+    },
+    "top_confused_pairs": [
+      {
+        "true": "dog",
+        "predicted": "cat",
+        "count": 10
+      },
+      {
+        "true": "automobile",
+        "predicted": "truck",
+        "count": 9
+      },
+      {
+        "true": "truck",
+        "predicted": "automobile",
+        "count": 8
+      },
+      {
+        "true": "ship",
+        "predicted": "airplane",
+        "count": 7
+      },
+      {
+        "true": "frog",
+        "predicted": "cat",
+        "count": 7
+      }
+    ],
+    "optimal_clusters": 3,
+    "silhouette_score": 0.1727,
+    "run_dir": "runs/resnet_baseline"
+  }
+}

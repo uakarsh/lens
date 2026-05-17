@@ -1,0 +1,1692 @@
+{
+  "run_name": "resnet_baseline",
+  "dimensions": {
+    "data_issue": {
+      "label": "Data Issue",
+      "color": "#f9c74f",
+      "best_k": 29,
+      "silhouette": 0.2867,
+      "clusters": [
+        {
+          "cluster_id": 0,
+          "label": "automobile features misclassified as truck",
+          "size": 11,
+          "percentage": 7.3,
+          "representative_examples": [
+            {
+              "image_idx": 6581,
+              "true_class": "automobile",
+              "predicted_class": "truck",
+              "section_text": "The image lacks distinguishing features to differentiate between car and truck."
+            },
+            {
+              "image_idx": 9064,
+              "true_class": "automobile",
+              "predicted_class": "truck",
+              "section_text": "The image lacks distinguishing features to differentiate between car and truck."
+            },
+            {
+              "image_idx": 1631,
+              "true_class": "automobile",
+              "predicted_class": "truck",
+              "section_text": "The image lacks distinguishing features to differentiate between car and truck."
+            }
+          ]
+        },
+        {
+          "cluster_id": 1,
+          "label": "bird features misclassified as dog",
+          "size": 6,
+          "percentage": 4.0,
+          "representative_examples": [
+            {
+              "image_idx": 4883,
+              "true_class": "bird",
+              "predicted_class": "dog",
+              "section_text": "The image is correctly labeled but the model misclassifies it."
+            },
+            {
+              "image_idx": 1504,
+              "true_class": "automobile",
+              "predicted_class": "ship",
+              "section_text": "The image contains a visual artifact causing misclassification despite correct labeling."
+            },
+            {
+              "image_idx": 4448,
+              "true_class": "deer",
+              "predicted_class": "frog",
+              "section_text": "The image contains a visual artifact causing misclassification."
+            }
+          ]
+        },
+        {
+          "cluster_id": 2,
+          "label": "dog-deer confusion from background",
+          "size": 8,
+          "percentage": 5.3,
+          "representative_examples": [
+            {
+              "image_idx": 5903,
+              "true_class": "deer",
+              "predicted_class": "dog",
+              "section_text": "The image has a visually confusing background that resembles another animal's fur."
+            },
+            {
+              "image_idx": 5184,
+              "true_class": "deer",
+              "predicted_class": "dog",
+              "section_text": "The image has a visually confusing background that resembles another animal's fur."
+            },
+            {
+              "image_idx": 1595,
+              "true_class": "cat",
+              "predicted_class": "frog",
+              "section_text": "The image has a visually similar background that confuses fur texture with frog skin pattern."
+            }
+          ]
+        },
+        {
+          "cluster_id": 3,
+          "label": "frog features misclassified as cat",
+          "size": 6,
+          "percentage": 4.0,
+          "representative_examples": [
+            {
+              "image_idx": 5141,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": "The image has ambiguous visual features leading to classification confusion."
+            },
+            {
+              "image_idx": 3349,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": "The image has ambiguous visual features leading to classification confusion."
+            },
+            {
+              "image_idx": 9346,
+              "true_class": "horse",
+              "predicted_class": "cat",
+              "section_text": "The image contains ambiguous visual features that could mislead a classifier."
+            }
+          ]
+        },
+        {
+          "cluster_id": 4,
+          "label": "frog features misclassified as cat",
+          "size": 5,
+          "percentage": 3.3,
+          "representative_examples": [
+            {
+              "image_idx": 1958,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": "The image lacks distinguishing features that differentiate a frog from a cat."
+            },
+            {
+              "image_idx": 9693,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": "The image lacks distinguishing features that differentiate a frog from a cat."
+            },
+            {
+              "image_idx": 1935,
+              "true_class": "frog",
+              "predicted_class": "bird",
+              "section_text": "The image lacks distinguishing features that differentiate a frog from a cat."
+            }
+          ]
+        },
+        {
+          "cluster_id": 7,
+          "label": "dark texture mimics animal fur pattern",
+          "size": 11,
+          "percentage": 7.3,
+          "representative_examples": [
+            {
+              "image_idx": 9528,
+              "true_class": "airplane",
+              "predicted_class": "ship",
+              "section_text": "The image lacks critical visual features due to partial occlusion and cropping."
+            },
+            {
+              "image_idx": 9553,
+              "true_class": "horse",
+              "predicted_class": "deer",
+              "section_text": "The image lacks key distinguishing features due to a cropped view."
+            },
+            {
+              "image_idx": 8488,
+              "true_class": "truck",
+              "predicted_class": "automobile",
+              "section_text": "The image lacks clear visual features to distinguish between classes due to occlusion and poor cropping."
+            }
+          ]
+        },
+        {
+          "cluster_id": 11,
+          "label": "airplane features misclassified as ship",
+          "size": 11,
+          "percentage": 7.3,
+          "representative_examples": [
+            {
+              "image_idx": 9812,
+              "true_class": "cat",
+              "predicted_class": "ship",
+              "section_text": "The image contains visual features that could be misinterpreted as a ship."
+            },
+            {
+              "image_idx": 883,
+              "true_class": "airplane",
+              "predicted_class": "ship",
+              "section_text": "The image contains visual features that could be misinterpreted as a ship."
+            },
+            {
+              "image_idx": 526,
+              "true_class": "airplane",
+              "predicted_class": "deer",
+              "section_text": "The image contains visual features that could be misinterpreted as a ship."
+            }
+          ]
+        },
+        {
+          "cluster_id": 12,
+          "label": "dark texture mimics airplane fuselage",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 9805,
+              "true_class": "bird",
+              "predicted_class": "airplane",
+              "section_text": "The image contains visual features resembling an airplane instead of a bird."
+            },
+            {
+              "image_idx": 4546,
+              "true_class": "bird",
+              "predicted_class": "airplane",
+              "section_text": "The image contains visual features resembling an airplane instead of a bird."
+            },
+            {
+              "image_idx": 7419,
+              "true_class": "airplane",
+              "predicted_class": "automobile",
+              "section_text": "The image contains a visually ambiguous occluded airplane against a car-like texture."
+            }
+          ]
+        },
+        {
+          "cluster_id": 13,
+          "label": "feline features misclassified as animals",
+          "size": 6,
+          "percentage": 4.0,
+          "representative_examples": [
+            {
+              "image_idx": 2775,
+              "true_class": "cat",
+              "predicted_class": "deer",
+              "section_text": "The image contains clear feline features but is labeled as deer in the dataset."
+            },
+            {
+              "image_idx": 5281,
+              "true_class": "cat",
+              "predicted_class": "frog",
+              "section_text": "The image contains clear feline features but is labeled as deer in the dataset."
+            },
+            {
+              "image_idx": 3570,
+              "true_class": "cat",
+              "predicted_class": "dog",
+              "section_text": "The image contains clear feline features but is labeled as deer in the dataset."
+            }
+          ]
+        },
+        {
+          "cluster_id": 15,
+          "label": "dark texture mimics airplane wing texture",
+          "size": 10,
+          "percentage": 6.7,
+          "representative_examples": [
+            {
+              "image_idx": 9784,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": "The image is visually ambiguous due to a corrupted crop and occlusion."
+            },
+            {
+              "image_idx": 7913,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": "The image is visually ambiguous due to a corrupted crop and occlusion."
+            },
+            {
+              "image_idx": 8872,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": "The image is visually ambiguous due to a corrupted crop and occlusion."
+            }
+          ]
+        },
+        {
+          "cluster_id": 16,
+          "label": "dark texture mimics truck cab structure",
+          "size": 6,
+          "percentage": 4.0,
+          "representative_examples": [
+            {
+              "image_idx": 2059,
+              "true_class": "truck",
+              "predicted_class": "automobile",
+              "section_text": "The image is cropped, making the front half visually ambiguous between a truck and a car."
+            },
+            {
+              "image_idx": 3365,
+              "true_class": "truck",
+              "predicted_class": "automobile",
+              "section_text": "The image is visually ambiguous due to a cropped, occluded truck blending with the background."
+            },
+            {
+              "image_idx": 7600,
+              "true_class": "ship",
+              "predicted_class": "truck",
+              "section_text": "The image is ambiguously cropped, making the ship indistinguishable from a truck's side."
+            }
+          ]
+        },
+        {
+          "cluster_id": 19,
+          "label": "dog features misclassified as cat",
+          "size": 6,
+          "percentage": 4.0,
+          "representative_examples": [
+            {
+              "image_idx": 8440,
+              "true_class": "dog",
+              "predicted_class": "cat",
+              "section_text": "The image lacks distinct visual features that differentiate it from cats."
+            },
+            {
+              "image_idx": 2573,
+              "true_class": "dog",
+              "predicted_class": "cat",
+              "section_text": "The image lacks distinct visual features that differentiate it from cats."
+            },
+            {
+              "image_idx": 5156,
+              "true_class": "dog",
+              "predicted_class": "cat",
+              "section_text": "The image lacks distinct visual features that differentiate it from cats."
+            }
+          ]
+        },
+        {
+          "cluster_id": 23,
+          "label": "dark texture mimics animal fur pattern",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 9506,
+              "true_class": "deer",
+              "predicted_class": "automobile",
+              "section_text": "The image has a background texture that visually resembles an automobile, causing confusion."
+            },
+            {
+              "image_idx": 4970,
+              "true_class": "bird",
+              "predicted_class": "cat",
+              "section_text": "The image lacks clear visual cues due to a texture-similar background."
+            },
+            {
+              "image_idx": 2605,
+              "true_class": "deer",
+              "predicted_class": "dog",
+              "section_text": "The image has visually similar textures that confuse object boundaries."
+            }
+          ]
+        },
+        {
+          "cluster_id": 28,
+          "label": "green background mimics frog texture",
+          "size": 8,
+          "percentage": 5.3,
+          "representative_examples": [
+            {
+              "image_idx": 6913,
+              "true_class": "cat",
+              "predicted_class": "frog",
+              "section_text": "The image contains visual features that could be misinterpreted as a frog."
+            },
+            {
+              "image_idx": 9292,
+              "true_class": "cat",
+              "predicted_class": "horse",
+              "section_text": "The image contains visual features that could be misinterpreted as a frog."
+            },
+            {
+              "image_idx": 3400,
+              "true_class": "frog",
+              "predicted_class": "horse",
+              "section_text": "The image has visually similar features between frog and horse, causing confusion."
+            }
+          ]
+        }
+      ]
+    },
+    "visual_cause": {
+      "label": "Visual Cause",
+      "color": "#7fb3f5",
+      "best_k": 16,
+      "silhouette": 0.1379,
+      "clusters": [
+        {
+          "cluster_id": 0,
+          "label": "texture similarity with background and objects",
+          "size": 9,
+          "percentage": 6.0,
+          "representative_examples": [
+            {
+              "image_idx": 8770,
+              "true_class": "frog",
+              "predicted_class": "deer",
+              "section_text": "the **texture similarity between the frog's skin and the background**. The frog's smooth, slightly glossy skin has a subtle greenish-brown hue that matches the background's earthy tones. This creates a visual blending effect where the frog's body appears to \"melt\" into the background, making it look"
+            },
+            {
+              "image_idx": 162,
+              "true_class": "frog",
+              "predicted_class": "dog",
+              "section_text": "the **texture similarity between the frog's skin and the dog's fur**, combined with **partial occlusion of the frog's head by a dark background**. The frog's skin has a smooth, slightly glossy texture that resembles the short, dense fur of a dog in certain lighting conditions. Additionally, the dark"
+            },
+            {
+              "image_idx": 3400,
+              "true_class": "frog",
+              "predicted_class": "horse",
+              "section_text": "the **texture and shape of the frog's body**, which resembles the **smooth, rounded contours of a horse's torso** in this particular lighting. The frog's skin texture appears mottled and slightly blurred due to the image's low resolution, creating a visual similarity to the horse's coat. Additionall"
+            }
+          ]
+        },
+        {
+          "cluster_id": 1,
+          "label": "top-down crop mimics airplane underside",
+          "size": 8,
+          "percentage": 5.3,
+          "representative_examples": [
+            {
+              "image_idx": 8872,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": "the **top-down crop that cuts off the ship's hull and exposes only the lower portion of the vessel**, which aligns with the shape of an airplane's fuselage. The dark, textured background (resembling a wing or shadow) further blends with the ship's structure, creating a visual overlap where the ship'"
+            },
+            {
+              "image_idx": 9784,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": "the **top-down crop that cuts off the ship's hull and exposes only the lower portion of the vessel**, which aligns with the underside of an airplane wing. The dark, textured background (resembling the underside of an airplane) further blurs the distinction. The ship's hull is missing its upper secti"
+            },
+            {
+              "image_idx": 8892,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": "the **partial occlusion of the ship's hull by a dark, textured background** that mimics the underside of an airplane wing. The background has a gradient of dark blue to black with subtle texture, which visually overlaps with the ship's hull. Additionally, the ship's masts are cropped at the top, cre"
+            }
+          ]
+        },
+        {
+          "cluster_id": 2,
+          "label": "partial occlusion by dark textured elements",
+          "size": 14,
+          "percentage": 9.3,
+          "representative_examples": [
+            {
+              "image_idx": 4837,
+              "true_class": "horse",
+              "predicted_class": "deer",
+              "section_text": "the **partial occlusion of the horse's head by a dark, textured object** (likely a tree branch or foliage) in the upper-left corner of the image. This occlusion creates a visual \"mask\" that obscures the horse's distinctive facial features (e.g., the shape of the muzzle, ears, and forehead), while th"
+            },
+            {
+              "image_idx": 9346,
+              "true_class": "horse",
+              "predicted_class": "cat",
+              "section_text": "the **partial occlusion of the horse's tail and body by a dark, textured background element** (likely a tree branch or foliage). The tail is cut off at the top, and the body is obscured by a dark, irregular shape that resembles a cat's tail or body. Additionally, the **rounded ears and head shape** "
+            },
+            {
+              "image_idx": 808,
+              "true_class": "horse",
+              "predicted_class": "cat",
+              "section_text": "the **partial occlusion of the horse's head and neck by a dark, textured foreground object** (likely foliage). The horse's body is visible, but the occlusion cuts off the head, which is critical for distinguishing a horse from a cat. Additionally, the **blurred background** lacks context (e.g., gras"
+            }
+          ]
+        },
+        {
+          "cluster_id": 3,
+          "label": "dark textured background mimics fur texture",
+          "size": 16,
+          "percentage": 10.7,
+          "representative_examples": [
+            {
+              "image_idx": 1526,
+              "true_class": "deer",
+              "predicted_class": "dog",
+              "section_text": "the **dark, textured background that mimics dog fur**, which partially obscures the deer's head and neck. The background has a coarse, brownish texture with irregular patterns that closely resemble the fur of a dog, especially in the lower portion of the image. This creates a visual overlap where th"
+            },
+            {
+              "image_idx": 5634,
+              "true_class": "deer",
+              "predicted_class": "dog",
+              "section_text": "the **partial occlusion of the deer's head by a dark, textured background element** that resembles a dog's fur pattern. The background has a brownish-gray texture with irregular shapes that mimic the fur of a dog, especially in the lower-left quadrant where the deer's head is partially hidden. This "
+            },
+            {
+              "image_idx": 5184,
+              "true_class": "deer",
+              "predicted_class": "dog",
+              "section_text": "the **dark, textured background that mimics dog fur**, combined with the **deer's head being partially obscured by the background**. The background has a coarse, brownish texture with irregular patterns that closely resemble the fur of a dog, especially in the lower portion of the image where the de"
+            }
+          ]
+        },
+        {
+          "cluster_id": 4,
+          "label": "partial occlusion by dark textured objects",
+          "size": 16,
+          "percentage": 10.7,
+          "representative_examples": [
+            {
+              "image_idx": 3570,
+              "true_class": "cat",
+              "predicted_class": "dog",
+              "section_text": "the **partial occlusion of the cat's head by a dark, textured background element** that resembles a dog's ear or fur. The background has a dark, fuzzy texture with a slight upward curve that visually aligns with the shape of a dog's ear, while the cat's actual ears are partially hidden. Additionally"
+            },
+            {
+              "image_idx": 5156,
+              "true_class": "dog",
+              "predicted_class": "cat",
+              "section_text": "the **partial occlusion of the dog's head by a dark, textured object** (likely a toy or blanket) in the upper-left corner. This object has a **cat-like fur texture** (soft, short, and slightly blurred) that visually blends with the dog's fur, creating a false impression of a cat's head. Additionally"
+            },
+            {
+              "image_idx": 9041,
+              "true_class": "dog",
+              "predicted_class": "cat",
+              "section_text": "the **partial occlusion of the dog\u2019s head by a dark, textured background element** (likely a shadow or object) that creates a **cat-like silhouette**. The dog\u2019s ears are partially hidden, and the dark shape behind its head resembles a cat\u2019s head shape, while the dog\u2019s body is visible but cropped at "
+            }
+          ]
+        },
+        {
+          "cluster_id": 6,
+          "label": "partial occlusion by dark textured background",
+          "size": 22,
+          "percentage": 14.7,
+          "representative_examples": [
+            {
+              "image_idx": 6581,
+              "true_class": "automobile",
+              "predicted_class": "truck",
+              "section_text": "the **partial occlusion of the car's front end by a dark, textured object** (likely a shadow or debris) that covers the hood and grille area. This occlusion creates a visual impression of a truck's front bumper and grille, which the model associates with trucks. Additionally, the **low-contrast back"
+            },
+            {
+              "image_idx": 3365,
+              "true_class": "truck",
+              "predicted_class": "automobile",
+              "section_text": "the **partial occlusion of the truck's rear section by a dark, textured background** that mimics the body of an automobile. The truck's cab and wheels are visible, but the crop cuts off the rear portion (where the truck's distinctive shape and tailgate would be), leaving only the front half. The bac"
+            },
+            {
+              "image_idx": 7826,
+              "true_class": "truck",
+              "predicted_class": "automobile",
+              "section_text": "the **partial occlusion of the truck's cab and front wheels by a dark, vertical object on the left side**, which visually merges with the truck's body. The truck's rear section is visible, but the front is hidden, making it resemble a shorter automobile (e.g., a sedan or hatchback) with a truncated "
+            }
+          ]
+        },
+        {
+          "cluster_id": 8,
+          "label": "dark blue gradient mimics ship hull",
+          "size": 8,
+          "percentage": 5.3,
+          "representative_examples": [
+            {
+              "image_idx": 2986,
+              "true_class": "automobile",
+              "predicted_class": "ship",
+              "section_text": "the **dark blue background with a subtle gradient** that mimics the color of a ship's hull. The car's body is partially obscured by a **vertical crop that cuts off the lower portion of the vehicle**, leaving only the upper half visible. This cropped view makes the car's roof and side panels resemble"
+            },
+            {
+              "image_idx": 1504,
+              "true_class": "automobile",
+              "predicted_class": "ship",
+              "section_text": "the **background color and texture**. The image has a **solid blue background** that matches the typical color of a ship's hull. Additionally, the **car's body is partially obscured by a blue gradient** that blends into the background, creating the illusion of a ship's surface. The car's wheels and "
+            },
+            {
+              "image_idx": 1685,
+              "true_class": "ship",
+              "predicted_class": "truck",
+              "section_text": "the **partial occlusion of the ship's hull by the blue background**, combined with **similar curvature in the ship's bow and truck's front bumper**. The ship's bow is cropped at the top, leaving only a curved edge that resembles the truck's front fender. The blue background (which should be water) i"
+            }
+          ]
+        },
+        {
+          "cluster_id": 9,
+          "label": "dark mottled background mimics frog skin texture",
+          "size": 10,
+          "percentage": 6.7,
+          "representative_examples": [
+            {
+              "image_idx": 5204,
+              "true_class": "cat",
+              "predicted_class": "frog",
+              "section_text": "the **dark, mottled background texture** that matches the frog's skin pattern. The cat's body is partially visible but appears to blend into the background, with its fur texture (light brown with darker spots) resembling the frog's skin. The cat's head is cut off at the top, and the background's irr"
+            },
+            {
+              "image_idx": 8616,
+              "true_class": "cat",
+              "predicted_class": "frog",
+              "section_text": "the **dark, mottled background texture** that closely matches the frog's skin pattern. The cat's body is positioned such that its fur texture blends with the background, making the cat's outline less distinct. The background's irregular, dark brown and black patches mimic the frog's skin, while the "
+            },
+            {
+              "image_idx": 1595,
+              "true_class": "cat",
+              "predicted_class": "frog",
+              "section_text": "the **dark, mottled background texture** that matches the texture of a frog's skin. The cat's fur pattern is indistinguishable from the background in the lower half of the image, where the cat's body is partially hidden. The background's irregular, bumpy texture (resembling frog skin) dominates the "
+            }
+          ]
+        },
+        {
+          "cluster_id": 10,
+          "label": "dark blue gradient mimics water texture",
+          "size": 8,
+          "percentage": 5.3,
+          "representative_examples": [
+            {
+              "image_idx": 2628,
+              "true_class": "airplane",
+              "predicted_class": "ship",
+              "section_text": "the **dark blue background with a subtle gradient** that mimics the color of water. The airplane is positioned against this background, and the **lack of visible sky or ground context** makes the background appear like a sea or ocean. Additionally, the **low contrast between the airplane's dark blue"
+            },
+            {
+              "image_idx": 883,
+              "true_class": "airplane",
+              "predicted_class": "ship",
+              "section_text": "the **dark blue background with a subtle gradient** that mimics the color of water. The airplane is positioned against this background, and the **lack of visible sky or ground context** makes the background appear like a sea or ocean. Additionally, the **low contrast between the airplane's dark blue"
+            },
+            {
+              "image_idx": 6877,
+              "true_class": "airplane",
+              "predicted_class": "ship",
+              "section_text": "the **solid blue background that blends with the airplane's color scheme**. The airplane's fuselage and wings have a light gray/blue tone that matches the sky, while the background is a uniform blue. This creates a visual similarity to a ship on water, where the water is also blue. Additionally, the"
+            }
+          ]
+        },
+        {
+          "cluster_id": 11,
+          "label": "dark textured background mimics cat fur texture",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 4001,
+              "true_class": "bird",
+              "predicted_class": "cat",
+              "section_text": "the **partial occlusion of the bird's body by a dark, textured background** that mimics the fur pattern of a cat. The bird is positioned in the center of the image, but its lower body and tail are obscured by a dark, grainy texture that resembles cat fur. Additionally, the bird's head is slightly ti"
+            },
+            {
+              "image_idx": 4970,
+              "true_class": "bird",
+              "predicted_class": "cat",
+              "section_text": "the **dark, textured background that mimics cat fur**, which overlaps with the bird's body. The bird's head and wings are visible, but the background texture (brownish-gray with subtle patterns) blends with the bird's plumage, making it appear as if the bird is partially hidden in a cat-like environ"
+            },
+            {
+              "image_idx": 5640,
+              "true_class": "bird",
+              "predicted_class": "cat",
+              "section_text": "the **dark, textured background that mimics cat fur**, particularly in the lower-left quadrant of the image. The bird's tail feathers (which should be light brown with subtle stripes) are partially obscured by this background, making the tail appear to blend into the background. Additionally, the bi"
+            }
+          ]
+        },
+        {
+          "cluster_id": 13,
+          "label": "dark blue gradient mimics bird feathers",
+          "size": 8,
+          "percentage": 5.3,
+          "representative_examples": [
+            {
+              "image_idx": 9805,
+              "true_class": "bird",
+              "predicted_class": "airplane",
+              "section_text": "the **partial occlusion of the bird's wings by a bright blue background**. The bird is positioned against a solid blue backdrop, which creates a visual effect where the wings appear to be the tail section of an airplane. The blue background is uniform and matches the color of the airplane's fuselage"
+            },
+            {
+              "image_idx": 9528,
+              "true_class": "airplane",
+              "predicted_class": "ship",
+              "section_text": "the **partial occlusion of the airplane's wings and fuselage by a dark, water-like background texture**. The background has a blue-gray gradient with subtle wave patterns that mimic the appearance of water or a ship's hull. The airplane's tail section is visible, but the wings are cut off at the top"
+            },
+            {
+              "image_idx": 2461,
+              "true_class": "airplane",
+              "predicted_class": "bird",
+              "section_text": "the **blurred, wing-shaped silhouette in the background** that overlaps with the airplane's tail section. The background color (light blue) and the blurred texture of the wing-like shape create a visual illusion where the tail of the airplane appears to be part of a bird's wing. The crop cuts off th"
+            }
+          ]
+        },
+        {
+          "cluster_id": 14,
+          "label": "top-down crop removes bird body context",
+          "size": 6,
+          "percentage": 4.0,
+          "representative_examples": [
+            {
+              "image_idx": 9385,
+              "true_class": "horse",
+              "predicted_class": "bird",
+              "section_text": "the **partial occlusion of the horse's head by a bright blue sky background**. The top portion of the horse's head is cut off by the sky, leaving only the lower half of the face visible. This cropping creates a visual similarity to a bird's head because the remaining visible features (e.g., the hors"
+            },
+            {
+              "image_idx": 1506,
+              "true_class": "dog",
+              "predicted_class": "horse",
+              "section_text": "The image is cropped extremely tightly around the dog's head and upper body, cutting off the dog's lower body, tail, and most of its legs. This crop creates a visual effect where the dog's head appears to be resting on a horse's neck, and the dog's ears are positioned in a way that resembles a horse"
+            },
+            {
+              "image_idx": 3044,
+              "true_class": "horse",
+              "predicted_class": "dog",
+              "section_text": "The horse is cropped extremely tightly around its head and neck, with the image cut off at the top of the horse's head. The visible portion shows a rounded shape with a dark mane that resembles a dog's head, and the background is a solid brown color that blends with the horse's coat. The lack of vis"
+            }
+          ]
+        },
+        {
+          "cluster_id": 15,
+          "label": "dark gradient mask over frog body",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 1958,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": "the **partial occlusion of the frog\u2019s head by a dark, textured background element** that resembles a cat\u2019s ear or fur pattern. The background has a **dark brown, slightly blurred texture** that overlaps the frog\u2019s left side, creating a visual illusion of a cat\u2019s ear. Additionally, the **frog\u2019s body "
+            },
+            {
+              "image_idx": 9693,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": "the **partial occlusion of the frog\u2019s head by a dark, textured background element** that resembles a cat\u2019s ear or fur pattern. The background has a dark brown, slightly blurred texture that overlaps the frog\u2019s left side, creating a visual illusion of a cat\u2019s ear. Additionally, the frog\u2019s body is pos"
+            },
+            {
+              "image_idx": 5141,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": "the **dark, blurred background that creates a high-contrast silhouette resembling a cat\u2019s shape**. The frog\u2019s body is positioned in a way that its rounded head and body contour align with the typical shape of a cat\u2019s torso when viewed from a side angle. Additionally, the **low-resolution texture of "
+            }
+          ]
+        }
+      ]
+    },
+    "fix": {
+      "label": "Fix",
+      "color": "#4caf50",
+      "best_k": 25,
+      "silhouette": 0.096,
+      "clusters": [
+        {
+          "cluster_id": 0,
+          "label": "Tail Section Cropping Augmentation",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 7513,
+              "true_class": "airplane",
+              "predicted_class": "horse",
+              "section_text": "** heavily cropped airplane tails** with similar backgrounds to improve the model\u2019s ability to recognize partial views. Alternatively, **apply a specific augmentation** that simulates this edge case: crop the image to focus only on the tail section (e"
+            },
+            {
+              "image_idx": 526,
+              "true_class": "airplane",
+              "predicted_class": "deer",
+              "section_text": "distinguish these cases, ** airplanes with similar wing textures** (e.g., metallic or smooth surfaces) and **apply a specific augmentation** that simulates the partial occlusion of the tail. Specifically, **add a crop augmentation that focuses on the wing and fuselage while intentionally obscuring t"
+            },
+            {
+              "image_idx": 4447,
+              "true_class": "airplane",
+              "predicted_class": "frog",
+              "section_text": "distinguish these cases, ** airplanes with partial tail visibility** (e.g., cropped images showing only the tail section) paired with the same green background. Additionally, **apply a specific augmentation** that simulates the crop and background texture: **random cropping to focus on the tail sect"
+            }
+          ]
+        },
+        {
+          "cluster_id": 1,
+          "label": "Partial Head Occlusion Augmentation",
+          "size": 10,
+          "percentage": 6.7,
+          "representative_examples": [
+            {
+              "image_idx": 2525,
+              "true_class": "dog",
+              "predicted_class": "cat",
+              "section_text": ", the model needs **more training examples of dogs with partial occlusion of the head due to cropping or background interference**. Specifically, augmentations should include **vertical cropping that cuts off the top of the dog's head** while preserving the lower body and fur texture. This would hel"
+            },
+            {
+              "image_idx": 9385,
+              "true_class": "horse",
+              "predicted_class": "bird",
+              "section_text": ", the model needs **more training examples of horses with similar cropping patterns** where the head is partially occluded by a sky background. Specifically, augmentations should include **vertical cropping that cuts off the top portion of the horse's head** while preserving the lower face and body."
+            },
+            {
+              "image_idx": 1506,
+              "true_class": "dog",
+              "predicted_class": "horse",
+              "section_text": "The model needs more training examples of dogs cropped in this specific way, with the same tight framing around the head and upper body. A specific augmentation would be to apply a crop that consistently removes the lower body and tail of dogs while keeping the head and upper body visible, paired wi"
+            }
+          ]
+        },
+        {
+          "cluster_id": 2,
+          "label": "Background Texture Augmentation for Frogs",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 162,
+              "true_class": "frog",
+              "predicted_class": "dog",
+              "section_text": ", the model needs **more training examples of frogs with partial occlusion of the head** and **texture-specific augmentations**. Specifically, add **cropped images of frogs where the head is partially obscured by shadows or background elements** (e.g., simulating the dark background"
+            },
+            {
+              "image_idx": 3349,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": ", the model needs **more training examples of frogs with dark backgrounds and partial occlusion**. Specifically, augmentations should include **background color jitter** (e.g., adding"
+            },
+            {
+              "image_idx": 3582,
+              "true_class": "frog",
+              "predicted_class": "truck",
+              "section_text": ", the model needs **more training examples of frogs with similar background textures** (e.g., frogs on gray/brown surfaces) to learn the distinction between natural textures and artificial objects. Additionally, **color augmentation** (e.g., adding subtle color shifts to simulate different lighting "
+            }
+          ]
+        },
+        {
+          "cluster_id": 3,
+          "label": "Background Texture Augmentation for Deer",
+          "size": 14,
+          "percentage": 9.3,
+          "representative_examples": [
+            {
+              "image_idx": 5184,
+              "true_class": "deer",
+              "predicted_class": "dog",
+              "section_text": "Add **more training examples of deer with similar background textures** (e.g., dark, coarse, brownish backgrounds) to improve the model's ability to distinguish between deer and dogs in such scenarios. Additionally, apply **background augmentation** where the model is trained to recognize deer in en"
+            },
+            {
+              "image_idx": 8842,
+              "true_class": "deer",
+              "predicted_class": "frog",
+              "section_text": "Add **more training examples of deer with similar background textures** (e.g., deer in environments with mottled, brownish-gray backgrounds) to teach the model to distinguish the deer's body from the background. Alternatively, apply **background segmentation augmentation** during training to isolate"
+            },
+            {
+              "image_idx": 5903,
+              "true_class": "deer",
+              "predicted_class": "dog",
+              "section_text": "Add **more training examples of deer with similar textured backgrounds** (e.g., natural environments with coarse, brownish textures) to improve the model's ability to distinguish between deer and dogs in such contexts. Additionally, apply **background blurring or segmentation** during training to re"
+            }
+          ]
+        },
+        {
+          "cluster_id": 4,
+          "label": "Midpoint Crop Augmentation for Trucks",
+          "size": 6,
+          "percentage": 4.0,
+          "representative_examples": [
+            {
+              "image_idx": 5311,
+              "true_class": "truck",
+              "predicted_class": "automobile",
+              "section_text": "distinguish trucks from automobiles in this edge case, ** trucks cropped similarly to this image** (e.g., front-half views with missing rear sections) but labeled correctly as \"truck.\" Alternatively, **apply a specific augmentation** that simulates this crop type during training\u2014such as a horizontal"
+            },
+            {
+              "image_idx": 8385,
+              "true_class": "truck",
+              "predicted_class": "automobile",
+              "section_text": "distinguish between trucks and automobiles in this edge case, ** trucks with partial occlusion** (e.g., trucks with dark backgrounds or low contrast) and **apply specific augmentations** such as:  \n- **Random cropping** to simulate partial occlusion (e.g., cropping the top 20"
+            },
+            {
+              "image_idx": 3492,
+              "true_class": "truck",
+              "predicted_class": "automobile",
+              "section_text": ", ** trucks cropped at the bottom** with similar background colors. This would help the model learn to recognize trucks even when partially occluded. Alternatively, **apply a specific augmentation** that simulates bottom cropping (e.g., a 10% vertical crop at the bottom) to the truck class during tr"
+            }
+          ]
+        },
+        {
+          "cluster_id": 6,
+          "label": "Sky Background Augmentation for Ships",
+          "size": 8,
+          "percentage": 5.3,
+          "representative_examples": [
+            {
+              "image_idx": 8653,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": "ships with **sky backgrounds** where the hull is not clearly separated from the sky. Specifically, augment the dataset with images of ships that have **bright blue sky backgrounds** but include **water or sea context** to reinforce the distinction between ships and airplanes. Alternatively, apply a "
+            },
+            {
+              "image_idx": 8546,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": "Add **more training examples of ships with sky backgrounds** where the horizon is absent or blurred. Specifically, augment the dataset with **ships cropped at the top** (to mimic the current crop) and **with blue sky backgrounds** to teach the model to distinguish between ships and airplanes in simi"
+            },
+            {
+              "image_idx": 4125,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": ", ** ships with partial hull occlusion** where the background is similar to the sky. Specifically, augment the dataset with images where the ship's hull is cropped at the bottom, and the background is a bright blue sky. Apply **horizontal flipping** to create variations where the ship's hull is visi"
+            }
+          ]
+        },
+        {
+          "cluster_id": 8,
+          "label": "Background Texture Augmentation for Birds",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 5640,
+              "true_class": "bird",
+              "predicted_class": "cat",
+              "section_text": "Add **more training examples of birds with partial occlusion by textured backgrounds** that mimic cat fur. Specifically, augment the dataset with images where the bird's tail is partially obscured by similar dark, textured backgrounds (e.g., using a background texture from the CIFAR-10 \"cat\" class b"
+            },
+            {
+              "image_idx": 4970,
+              "true_class": "bird",
+              "predicted_class": "cat",
+              "section_text": "Add **more training examples of birds with similar background textures** (e.g., birds in environments with brownish-gray fur-like patterns) to improve the model's ability to distinguish between the two classes. Additionally, apply **background blurring or segmentation augmentation** during training "
+            },
+            {
+              "image_idx": 4001,
+              "true_class": "bird",
+              "predicted_class": "cat",
+              "section_text": "distinguish these cases, ** birds with partial occlusion by textured backgrounds** (e.g., birds in dark, grainy environments where their body is partially hidden). Specifically, augment the dataset with images where the bird's body is obscured by similar dark, textured backgrounds (e.g., using"
+            }
+          ]
+        },
+        {
+          "cluster_id": 9,
+          "label": "Background Texture Augmentation for Frogs",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 9693,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": "To improve the model\u2019s ability to distinguish this edge case, ** frogs with similar background textures** (e.g., dark, textured backgrounds that partially occlude the head). Specifically, augment the dataset with images where the frog\u2019s head is partially covered by background elements that mimic cat"
+            },
+            {
+              "image_idx": 9471,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": "frogs with **dark, textured backgrounds** that mimic cat fur patterns, specifically focusing on cases where the frog's head is cropped off. Apply **background texture augmentation** to the training set: overlay subtle brown/mottled textures on frog images during preprocessing to simulate this edge c"
+            },
+            {
+              "image_idx": 2299,
+              "true_class": "frog",
+              "predicted_class": "cat",
+              "section_text": ", ** frogs with similar background textures** where the head is partially occluded by mottled patterns. Specifically, augment the dataset with images where the frog\u2019s head is cropped to show only the lower half, with a background texture that mimics cat fur (e.g., brown stripes or mottled patterns)."
+            }
+          ]
+        },
+        {
+          "cluster_id": 10,
+          "label": "Partial Occlusion with Textured Backgrounds Augmentation",
+          "size": 13,
+          "percentage": 8.7,
+          "representative_examples": [
+            {
+              "image_idx": 1631,
+              "true_class": "automobile",
+              "predicted_class": "truck",
+              "section_text": "Add **more training examples of automobiles with partial front occlusion by dark, textured background elements** (e.g., shadows or objects that mimic truck features). Specifically, augment the dataset with images where the car's front is partially covered by similar dark, textured elements but the c"
+            },
+            {
+              "image_idx": 3554,
+              "true_class": "automobile",
+              "predicted_class": "truck",
+              "section_text": ", the model needs **more training examples of automobiles with partial occlusions in the lower-left corner** that include similar textured foreground elements. Specifically, augmentations should include **randomized low-angle cropping** (focusing on the lower half of the image) combined with **textu"
+            },
+            {
+              "image_idx": 308,
+              "true_class": "automobile",
+              "predicted_class": "truck",
+              "section_text": "Add **more training examples of automobiles with similar background textures** (e.g., grayish-brown, coarse surfaces) where the vehicle is partially occluded. Specifically, augment the dataset with **horizontal cropping that cuts off the front of the automobile** while keeping the background texture"
+            }
+          ]
+        },
+        {
+          "cluster_id": 11,
+          "label": "Partial Occlusion with Textured Backgrounds Augmentation",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 7600,
+              "true_class": "ship",
+              "predicted_class": "truck",
+              "section_text": "learn to distinguish these cases, ** ships with partial occlusion by dark, textured backgrounds**. Specifically, augment the dataset with images where the ship is cropped similarly (e.g., top portion cut off) but with clear visual cues to identify it as a ship"
+            },
+            {
+              "image_idx": 8872,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": "**ships cropped at the top with dark, textured backgrounds** to teach the model the correct context for ship hulls. Specifically, augment the dataset with **top-down crops of ships that preserve the full hull structure** (e.g., zooming in on the hull to show the upper portion) and **adding backgroun"
+            },
+            {
+              "image_idx": 8892,
+              "true_class": "ship",
+              "predicted_class": "airplane",
+              "section_text": ", ** ships with similar background textures and partial occlusions**. Specifically, augment the dataset with images where the ship's hull is partially obscured by dark, textured backgrounds that mimic airplane wings. Use **color jitter** to adjust the background's hue and saturation to better distin"
+            }
+          ]
+        },
+        {
+          "cluster_id": 12,
+          "label": "Background Texture Augmentation for Cats",
+          "size": 14,
+          "percentage": 9.3,
+          "representative_examples": [
+            {
+              "image_idx": 9812,
+              "true_class": "cat",
+              "predicted_class": "ship",
+              "section_text": ", the model needs **more training examples with similar background textures** where the cat's fur texture is contrasted against a non-ship background. Specifically, augmentations like **color jitter to increase background contrast** (e.g., adding a brighter blue or green hue to the background) and *"
+            },
+            {
+              "image_idx": 5204,
+              "true_class": "cat",
+              "predicted_class": "frog",
+              "section_text": "Add **more training examples of cats with similar background textures** where the cat's fur blends into dark, mottled patterns. Alternatively, apply a **background blur augmentation** during training to reduce texture similarity between the cat and the background. If the dataset has limited examples"
+            },
+            {
+              "image_idx": 5281,
+              "true_class": "cat",
+              "predicted_class": "frog",
+              "section_text": ", the model needs **more training examples of cats with similar background textures and partial occlusions**. Specifically, augment the dataset with images where the cat's head is cropped at the top but retains key feline features (e.g., whiskers, ear shape), while the background has a green texture"
+            }
+          ]
+        },
+        {
+          "cluster_id": 14,
+          "label": "Background Texture Augmentation for Airplanes",
+          "size": 10,
+          "percentage": 6.7,
+          "representative_examples": [
+            {
+              "image_idx": 2628,
+              "true_class": "airplane",
+              "predicted_class": "ship",
+              "section_text": ", the model needs **more training examples of airplanes against dark blue backgrounds with minimal contrast**. Specifically, augmentations should include **color jitter to increase contrast** (e.g., adding brightness or saturation to the airplane's fuselage) and **background replacement** to introdu"
+            },
+            {
+              "image_idx": 1076,
+              "true_class": "airplane",
+              "predicted_class": "ship",
+              "section_text": ", the model needs **more training examples of airplanes with dark blue backgrounds and partial occlusions** that mimic water. Specifically, augmentations should include **color jitter to simulate varying background gradients** (e.g., adding subtle blue-to-gray transitions) and **horizontal cropping "
+            },
+            {
+              "image_idx": 678,
+              "true_class": "airplane",
+              "predicted_class": "automobile",
+              "section_text": ", the model needs **more training examples of airplanes with dark blue backgrounds and partial occlusion**. Specifically, augmentations should include **color jitter to emphasize blue tones** and **cropping to simulate partial visibility of wings/fuselage**. Additionally, adding **rotation and zoom*"
+            }
+          ]
+        },
+        {
+          "cluster_id": 20,
+          "label": "Partial Head Occlusion with Textured Backgrounds Augmentation",
+          "size": 5,
+          "percentage": 3.3,
+          "representative_examples": [
+            {
+              "image_idx": 9041,
+              "true_class": "dog",
+              "predicted_class": "cat",
+              "section_text": "Add **more training examples of dogs with partial occlusion of the head by textured backgrounds** (e.g., shadows, fabric, or other objects). Specifically, augment the dataset with images where the dog\u2019s head is partially obscured by similar dark, textured elements, but the dog\u2019s body and other featu"
+            },
+            {
+              "image_idx": 8440,
+              "true_class": "dog",
+              "predicted_class": "cat",
+              "section_text": "learn to distinguish these cases, **add more training examples where the dog's head is partially occluded by similar textured objects** (e.g., branches, leaves) in the upper-left corner. Specifically, augment the dataset with images where the dog's head is partially hidden by dark, textured foliage,"
+            },
+            {
+              "image_idx": 2036,
+              "true_class": "dog",
+              "predicted_class": "cat",
+              "section_text": "distinguish this edge case, ** dogs with partial occlusion of the head by textured objects** (e.g., toys, blankets) in similar lighting conditions. Specifically, **augment the dataset with cropped images where the dog's head is partially covered by brown/gray textured objects**, ensuring the dog's b"
+            }
+          ]
+        },
+        {
+          "cluster_id": 21,
+          "label": "Partial Head Occlusion with Textured Backgrounds Augmentation",
+          "size": 7,
+          "percentage": 4.7,
+          "representative_examples": [
+            {
+              "image_idx": 9346,
+              "true_class": "horse",
+              "predicted_class": "cat",
+              "section_text": "distinguish these cases, ** horses with partial occlusion of the tail/body** (e.g., cropped images where the tail is cut off but the head/ears are visible). Specifically, augment the dataset with"
+            },
+            {
+              "image_idx": 417,
+              "true_class": "horse",
+              "predicted_class": "dog",
+              "section_text": "distinguish these cases, ** horses with partial occlusion of the head by similar textured backgrounds**, specifically focusing on the **textural and color similarity between the background element and the horse's fur**. Additionally, apply **specific cropping augmentations** that simulate the partia"
+            },
+            {
+              "image_idx": 1576,
+              "true_class": "horse",
+              "predicted_class": "cat",
+              "section_text": "distinguish between these edge cases, ** horses with cropped views of the head and neck**, specifically focusing on the ear shape and neck texture. Include **augmentations that simulate the same cropping and background conditions** (e.g., zooming in on the horse's"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "data_issues": {
+    "total_actionable": 84,
+    "tag_counts": {
+      "ambiguous_image": 68,
+      "annotation_issue": 16
+    },
+    "failures": [
+      {
+        "image_idx": 8653,
+        "true_class": "ship",
+        "predicted_class": "airplane",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains a non-ship object that visually resembles a ship."
+      },
+      {
+        "image_idx": 7600,
+        "true_class": "ship",
+        "predicted_class": "truck",
+        "tag": "ambiguous_image",
+        "verdict": "The image is ambiguously cropped, making the ship indistinguishable from a truck's side."
+      },
+      {
+        "image_idx": 4125,
+        "true_class": "ship",
+        "predicted_class": "airplane",
+        "tag": "annotation_issue",
+        "verdict": "The image contains clear ship features but is mislabeled in the dataset."
+      },
+      {
+        "image_idx": 2420,
+        "true_class": "ship",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains a corrupted crop leading to visual ambiguity."
+      },
+      {
+        "image_idx": 8757,
+        "true_class": "ship",
+        "predicted_class": "deer",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains visual features that strongly resemble a deer despite showing a ship."
+      },
+      {
+        "image_idx": 8614,
+        "true_class": "ship",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains a ship but lacks distinguishing features for accurate classification."
+      },
+      {
+        "image_idx": 9012,
+        "true_class": "ship",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains overlapping objects making it hard to distinguish the ship from the automobile."
+      },
+      {
+        "image_idx": 2036,
+        "true_class": "dog",
+        "predicted_class": "cat",
+        "tag": "annotation_issue",
+        "verdict": "The image contains a golden retriever but is labeled as a cat in the dataset."
+      },
+      {
+        "image_idx": 6428,
+        "true_class": "dog",
+        "predicted_class": "frog",
+        "tag": "annotation_issue",
+        "verdict": "The image is labeled as \"frog\" despite clearly showing a dog with distinct canine features."
+      },
+      {
+        "image_idx": 2525,
+        "true_class": "dog",
+        "predicted_class": "cat",
+        "tag": "annotation_issue",
+        "verdict": "The image contains a dog but is labeled as a cat in the dataset."
+      },
+      {
+        "image_idx": 7439,
+        "true_class": "dog",
+        "predicted_class": "cat",
+        "tag": "annotation_issue",
+        "verdict": "The image contains a golden retriever but is labeled as a cat in the dataset."
+      },
+      {
+        "image_idx": 7292,
+        "true_class": "dog",
+        "predicted_class": "cat",
+        "tag": "annotation_issue",
+        "verdict": "The image contains a golden retriever but is labeled as a cat in the dataset."
+      },
+      {
+        "image_idx": 4970,
+        "true_class": "bird",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks clear visual cues due to a texture-similar background."
+      },
+      {
+        "image_idx": 5640,
+        "true_class": "bird",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The bird's tail feathers blend visually with the textured background, causing confusion."
+      },
+      {
+        "image_idx": 3534,
+        "true_class": "bird",
+        "predicted_class": "airplane",
+        "tag": "annotation_issue",
+        "verdict": "The bird is labeled as an airplane in the dataset."
+      },
+      {
+        "image_idx": 4003,
+        "true_class": "bird",
+        "predicted_class": "airplane",
+        "tag": "ambiguous_image",
+        "verdict": "The image is cropped to show only the head and neck, making it ambiguous."
+      },
+      {
+        "image_idx": 6969,
+        "true_class": "bird",
+        "predicted_class": "frog",
+        "tag": "annotation_issue",
+        "verdict": "The image contains a sparrow but is labeled as a frog in the dataset."
+      },
+      {
+        "image_idx": 7112,
+        "true_class": "bird",
+        "predicted_class": "airplane",
+        "tag": "ambiguous_image",
+        "verdict": "The image is ambiguously cropped, making the bird's features visually misleading."
+      },
+      {
+        "image_idx": 5862,
+        "true_class": "bird",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks key visual features due to an incomplete crop."
+      },
+      {
+        "image_idx": 5483,
+        "true_class": "automobile",
+        "predicted_class": "truck",
+        "tag": "ambiguous_image",
+        "verdict": "The cropped front end of the car resembles a truck's front visually."
+      },
+      {
+        "image_idx": 1504,
+        "true_class": "automobile",
+        "predicted_class": "ship",
+        "tag": "annotation_issue",
+        "verdict": "The image contains a visual artifact causing misclassification despite correct labeling."
+      },
+      {
+        "image_idx": 6329,
+        "true_class": "automobile",
+        "predicted_class": "ship",
+        "tag": "ambiguous_image",
+        "verdict": "The image is cropped, removing key car features and including ambiguous water textures."
+      },
+      {
+        "image_idx": 308,
+        "true_class": "automobile",
+        "predicted_class": "truck",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a dark, textured background causing visual confusion with the automobile."
+      },
+      {
+        "image_idx": 4476,
+        "true_class": "automobile",
+        "predicted_class": "dog",
+        "tag": "annotation_issue",
+        "verdict": "The image shows a toy car with wheels and a steering wheel, not a dog."
+      },
+      {
+        "image_idx": 8488,
+        "true_class": "truck",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks clear visual features to distinguish between classes due to occlusion and poor cropping."
+      },
+      {
+        "image_idx": 4852,
+        "true_class": "truck",
+        "predicted_class": "deer",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks sufficient context to distinguish the truck from similar shapes."
+      },
+      {
+        "image_idx": 744,
+        "true_class": "truck",
+        "predicted_class": "ship",
+        "tag": "ambiguous_image",
+        "verdict": "The background's solid blue color misleadingly suggests water, confusing both model and human."
+      },
+      {
+        "image_idx": 3365,
+        "true_class": "truck",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image is visually ambiguous due to a cropped, occluded truck blending with the background."
+      },
+      {
+        "image_idx": 3492,
+        "true_class": "truck",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks clear visual features to distinguish the truck from similar vehicles."
+      },
+      {
+        "image_idx": 7826,
+        "true_class": "truck",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains occlusion and blur leading to visual ambiguity."
+      },
+      {
+        "image_idx": 1465,
+        "true_class": "truck",
+        "predicted_class": "airplane",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks sufficient visual context and key features to accurately classify the object."
+      },
+      {
+        "image_idx": 1626,
+        "true_class": "truck",
+        "predicted_class": "airplane",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks clear visual features to distinguish between classes due to occlusion and poor cropping."
+      },
+      {
+        "image_idx": 2059,
+        "true_class": "truck",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image is cropped, making the front half visually ambiguous between a truck and a car."
+      },
+      {
+        "image_idx": 6542,
+        "true_class": "truck",
+        "predicted_class": "airplane",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains a visually ambiguous occluded truck resembling an airplane wing structure."
+      },
+      {
+        "image_idx": 2765,
+        "true_class": "truck",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks sufficient visibility of the truck due to occlusion and poor background context."
+      },
+      {
+        "image_idx": 6936,
+        "true_class": "truck",
+        "predicted_class": "airplane",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains a visually misleading composition with a dominant sky background."
+      },
+      {
+        "image_idx": 5311,
+        "true_class": "truck",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image is cropped, removing key distinguishing features of the truck."
+      },
+      {
+        "image_idx": 3312,
+        "true_class": "truck",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains occlusion and blur leading to visual ambiguity."
+      },
+      {
+        "image_idx": 5991,
+        "true_class": "cat",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks clear visual features due to occlusion and blur."
+      },
+      {
+        "image_idx": 2775,
+        "true_class": "cat",
+        "predicted_class": "deer",
+        "tag": "annotation_issue",
+        "verdict": "The image contains clear feline features but is labeled as deer in the dataset."
+      },
+      {
+        "image_idx": 8616,
+        "true_class": "cat",
+        "predicted_class": "frog",
+        "tag": "ambiguous_image",
+        "verdict": "The image's background texture visually mimics the cat's fur, causing visual confusion."
+      },
+      {
+        "image_idx": 898,
+        "true_class": "cat",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a misleading background texture and partial cropping causing visual confusion."
+      },
+      {
+        "image_idx": 5281,
+        "true_class": "cat",
+        "predicted_class": "frog",
+        "tag": "annotation_issue",
+        "verdict": "The image contains clear feline features but is labeled as deer in the dataset."
+      },
+      {
+        "image_idx": 3570,
+        "true_class": "cat",
+        "predicted_class": "dog",
+        "tag": "annotation_issue",
+        "verdict": "The image contains clear feline features but is labeled as deer in the dataset."
+      },
+      {
+        "image_idx": 1595,
+        "true_class": "cat",
+        "predicted_class": "frog",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a visually similar background that confuses fur texture with frog skin pattern."
+      },
+      {
+        "image_idx": 5204,
+        "true_class": "cat",
+        "predicted_class": "frog",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a visually similar background that confuses fur texture with frog skin pattern."
+      },
+      {
+        "image_idx": 1050,
+        "true_class": "cat",
+        "predicted_class": "bird",
+        "tag": "annotation_issue",
+        "verdict": "The image contains clear feline features but is labeled as deer in the dataset."
+      },
+      {
+        "image_idx": 5874,
+        "true_class": "cat",
+        "predicted_class": "frog",
+        "tag": "ambiguous_image",
+        "verdict": "The image's visual properties create ambiguity between cat and frog shapes."
+      },
+      {
+        "image_idx": 9281,
+        "true_class": "cat",
+        "predicted_class": "bird",
+        "tag": "annotation_issue",
+        "verdict": "The image contains clear feline features but is labeled as deer in the dataset."
+      },
+      {
+        "image_idx": 9385,
+        "true_class": "horse",
+        "predicted_class": "bird",
+        "tag": "annotation_issue",
+        "verdict": "The image contains a horse but is labeled as a bird in the dataset."
+      },
+      {
+        "image_idx": 9346,
+        "true_class": "horse",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains ambiguous visual features that could mislead a classifier."
+      },
+      {
+        "image_idx": 808,
+        "true_class": "horse",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains occlusion and blur, making key features indistinct."
+      },
+      {
+        "image_idx": 228,
+        "true_class": "horse",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks distinctive features, making it visually ambiguous between horse and cat."
+      },
+      {
+        "image_idx": 4993,
+        "true_class": "horse",
+        "predicted_class": "deer",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks key distinguishing features due to head cropping."
+      },
+      {
+        "image_idx": 1576,
+        "true_class": "horse",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains ambiguous visual features that could mislead both humans and models."
+      },
+      {
+        "image_idx": 4837,
+        "true_class": "horse",
+        "predicted_class": "deer",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains visually similar features of both horse and deer, causing confusion."
+      },
+      {
+        "image_idx": 1391,
+        "true_class": "horse",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks key equine features due to partial occlusion and cropping."
+      },
+      {
+        "image_idx": 9553,
+        "true_class": "horse",
+        "predicted_class": "deer",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks key distinguishing features due to a cropped view."
+      },
+      {
+        "image_idx": 8286,
+        "true_class": "horse",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The tail is visually ambiguous due to cropping and blurring."
+      },
+      {
+        "image_idx": 5287,
+        "true_class": "horse",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The tail is visually ambiguous between horse and cat due to cropping and blurring."
+      },
+      {
+        "image_idx": 5903,
+        "true_class": "deer",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a visually confusing background that resembles another animal's fur."
+      },
+      {
+        "image_idx": 7916,
+        "true_class": "deer",
+        "predicted_class": "frog",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a visually similar background that confuses the deer's appearance."
+      },
+      {
+        "image_idx": 7248,
+        "true_class": "deer",
+        "predicted_class": "airplane",
+        "tag": "ambiguous_image",
+        "verdict": "The image's partial occlusion and gradient background cause visual ambiguity."
+      },
+      {
+        "image_idx": 8842,
+        "true_class": "deer",
+        "predicted_class": "frog",
+        "tag": "ambiguous_image",
+        "verdict": "The background's frog-like texture confuses the deer's visual features."
+      },
+      {
+        "image_idx": 1526,
+        "true_class": "deer",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The deer's head and neck blend with the dark textured background, causing visual confusion."
+      },
+      {
+        "image_idx": 9506,
+        "true_class": "deer",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a background texture that visually resembles an automobile, causing confusion."
+      },
+      {
+        "image_idx": 2605,
+        "true_class": "deer",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The image has visually similar textures that confuse object boundaries."
+      },
+      {
+        "image_idx": 5184,
+        "true_class": "deer",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a visually confusing background that resembles another animal's fur."
+      },
+      {
+        "image_idx": 4448,
+        "true_class": "deer",
+        "predicted_class": "frog",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains a visual artifact causing misclassification."
+      },
+      {
+        "image_idx": 5141,
+        "true_class": "frog",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The image has ambiguous visual features leading to classification confusion."
+      },
+      {
+        "image_idx": 9471,
+        "true_class": "frog",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a visually similar texture that confuses the classifier."
+      },
+      {
+        "image_idx": 3400,
+        "true_class": "frog",
+        "predicted_class": "horse",
+        "tag": "ambiguous_image",
+        "verdict": "The image has visually similar features between frog and horse, causing confusion."
+      },
+      {
+        "image_idx": 8804,
+        "true_class": "frog",
+        "predicted_class": "airplane",
+        "tag": "ambiguous_image",
+        "verdict": "The image's cropping emphasizes body shape while hiding key frog-specific features."
+      },
+      {
+        "image_idx": 3349,
+        "true_class": "frog",
+        "predicted_class": "cat",
+        "tag": "ambiguous_image",
+        "verdict": "The image has ambiguous visual features leading to classification confusion."
+      },
+      {
+        "image_idx": 2455,
+        "true_class": "frog",
+        "predicted_class": "dog",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a visually similar background that confuses amphibian features with dog fur."
+      },
+      {
+        "image_idx": 2461,
+        "true_class": "airplane",
+        "predicted_class": "bird",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains a distracting background element resembling another object."
+      },
+      {
+        "image_idx": 4447,
+        "true_class": "airplane",
+        "predicted_class": "frog",
+        "tag": "ambiguous_image",
+        "verdict": "The image has a solid green background resembling a frog's skin, causing visual confusion."
+      },
+      {
+        "image_idx": 237,
+        "true_class": "airplane",
+        "predicted_class": "horse",
+        "tag": "ambiguous_image",
+        "verdict": "The image has ambiguous visual properties causing confusion between airplane and horse."
+      },
+      {
+        "image_idx": 1568,
+        "true_class": "airplane",
+        "predicted_class": "horse",
+        "tag": "ambiguous_image",
+        "verdict": "The image's cropped tail section creates visual ambiguity between an airplane and a horse."
+      },
+      {
+        "image_idx": 6877,
+        "true_class": "airplane",
+        "predicted_class": "ship",
+        "tag": "ambiguous_image",
+        "verdict": "The image has ambiguous visual properties causing confusion between airplane and horse."
+      },
+      {
+        "image_idx": 9528,
+        "true_class": "airplane",
+        "predicted_class": "ship",
+        "tag": "ambiguous_image",
+        "verdict": "The image lacks critical visual features due to partial occlusion and cropping."
+      },
+      {
+        "image_idx": 675,
+        "true_class": "airplane",
+        "predicted_class": "bird",
+        "tag": "ambiguous_image",
+        "verdict": "The image focuses on the tail, making it visually ambiguous for classification."
+      },
+      {
+        "image_idx": 7513,
+        "true_class": "airplane",
+        "predicted_class": "horse",
+        "tag": "ambiguous_image",
+        "verdict": "The image is severely cropped, lacking key visual features of an airplane."
+      },
+      {
+        "image_idx": 7419,
+        "true_class": "airplane",
+        "predicted_class": "automobile",
+        "tag": "ambiguous_image",
+        "verdict": "The image contains a visually ambiguous occluded airplane against a car-like texture."
+      }
+    ]
+  }
+}

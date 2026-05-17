@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.venv
+.python-version
+
+# Datasets (download on demand via torchvision)
+MNIST/
+cifar-10-batches-py/
+cifar-10-python.tar.gz
+
+# Large regenerable run artifacts
+runs/*/model.pth
+runs/*/failures.json
+runs/*/predictions.json
+runs/*/failures_with_hypotheses.json
+runs/*/llm_cache.json
+
+# Keep run metadata and results
+!runs/*/training_log.json
+!runs/*/analysis.json
+!runs/*/dimensional_clusters.json
+!runs/*/compress_cache.json
+!runs/*/human_feedback.json
+!runs/compare.json
+
+# Legacy flat files
+lens_mnist_*.json

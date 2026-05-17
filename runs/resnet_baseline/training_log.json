@@ -1,0 +1,86 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 1.0244,
+    "per_class_val_loss": {
+      "airplane": 0.6294,
+      "automobile": 0.3873,
+      "bird": 0.8666,
+      "cat": 1.1273,
+      "deer": 1.1223,
+      "dog": 0.9298,
+      "frog": 0.5229,
+      "horse": 0.4991,
+      "ship": 0.4339,
+      "truck": 0.7681
+    },
+    "per_class_val_acc": {
+      "airplane": 0.792,
+      "automobile": 0.869,
+      "bird": 0.688,
+      "cat": 0.58,
+      "deer": 0.632,
+      "dog": 0.634,
+      "frog": 0.834,
+      "horse": 0.834,
+      "ship": 0.87,
+      "truck": 0.728
+    }
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.5526,
+    "per_class_val_loss": {
+      "airplane": 0.5,
+      "automobile": 0.3458,
+      "bird": 0.9563,
+      "cat": 0.8276,
+      "deer": 0.6987,
+      "dog": 0.9789,
+      "frog": 0.545,
+      "horse": 0.6086,
+      "ship": 0.371,
+      "truck": 0.5832
+    },
+    "per_class_val_acc": {
+      "airplane": 0.842,
+      "automobile": 0.878,
+      "bird": 0.662,
+      "cat": 0.715,
+      "deer": 0.77,
+      "dog": 0.607,
+      "frog": 0.828,
+      "horse": 0.802,
+      "ship": 0.878,
+      "truck": 0.803
+    }
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.3336,
+    "per_class_val_loss": {
+      "airplane": 0.5887,
+      "automobile": 0.3394,
+      "bird": 0.9026,
+      "cat": 1.0615,
+      "deer": 0.6919,
+      "dog": 0.8705,
+      "frog": 0.4283,
+      "horse": 0.6188,
+      "ship": 0.3577,
+      "truck": 0.5205
+    },
+    "per_class_val_acc": {
+      "airplane": 0.818,
+      "automobile": 0.881,
+      "bird": 0.711,
+      "cat": 0.619,
+      "deer": 0.772,
+      "dog": 0.692,
+      "frog": 0.871,
+      "horse": 0.808,
+      "ship": 0.897,
+      "truck": 0.834
+    }
+  }
+]
