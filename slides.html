@@ -358,21 +358,21 @@
   <!-- 8. Data quality -->
   <div class="slide" id="s8">
     <div class="slide-label">Findings</div>
-    <h2>56% of failures are data quality issues</h2>
+    <h2>45% of failures flagged as ambiguous images</h2>
     <div class="two-col">
       <div>
-        <div class="col-label">Data issue breakdown (84 / 150)</div>
+        <div class="col-label">Data issue tags (68 / 150)</div>
         <ul class="bullets">
-          <li><strong class="yellow">68 ambiguous images</strong> — cropping removes key features, background texture bleed, images a human would also get wrong</li>
-          <li><strong class="red">16 labeling errors</strong> — outright wrong labels</li>
+          <li><strong class="yellow">68 ambiguous_image</strong> — cropping removes key features, background texture bleed, images a human would also get wrong</li>
+          <li><strong class="text2">66 model_error</strong> — image looks fine, model just got it wrong</li>
         </ul>
       </div>
       <div>
         <div class="col-label">What this means</div>
         <ul class="bullets">
-          <li>16 mislabeled per 150 failures is a high rate</li>
-          <li>Cleaning the dataset will move accuracy more reliably than any training change</li>
-          <li>The 68 ambiguous images are harder — some may just need to be accepted</li>
+          <li>Ambiguous images signal the same kinds of conditions the visual cause clusters surface</li>
+          <li>They're a guide to what augmentations might help</li>
+          <li>VLM also produced 16 annotation_issue flags — manual review suggests most are wrong</li>
         </ul>
       </div>
     </div>
@@ -411,28 +411,17 @@
     </ul>
   </div>
 
-  <!-- 11. Production use -->
+  <!-- 11. VLM quality -->
   <div class="slide" id="s11">
-    <div class="slide-label">Production Use</div>
-    <h2>How this fits into a real deployment loop</h2>
-    <div class="pipeline">
-      <div class="pipeline-step">
-        <div class="step-num">→</div>
-        <div><div class="step-title">annotation_issue tag</div><div class="step-desc">Immediately queue for relabeling — no additional analysis needed. These are clearly wrong labels.</div></div>
-      </div>
-      <div class="pipeline-step">
-        <div class="step-num">→</div>
-        <div><div class="step-title">Fix clusters</div><div class="step-desc">Input to augmentation strategy for the next training iteration. Specific, not generic.</div></div>
-      </div>
-      <div class="pipeline-step">
-        <div class="step-num">→</div>
-        <div><div class="step-title">Visual cause clusters</div><div class="step-desc">Write targeted eval suites for known failure modes. If "partial occlusion" is a cluster, construct test cases that stress it.</div></div>
-      </div>
-      <div class="pipeline-step">
-        <div class="step-num">→</div>
-        <div><div class="step-title">Cadence</div><div class="step-desc">Sample N failures per class after each deployment. Run analysis, re-cluster periodically — daily or after each model update.</div></div>
-      </div>
-    </div>
+    <div class="slide-label">The Hard Part</div>
+    <h2>Hypothesis generation is the bottleneck</h2>
+    <ul class="bullets">
+      <li><strong class="green">Correct</strong> — green car predicted as frog at 94% conf: "saturated green background dominates the frame." Verifiable, actionable fix follows directly</li>
+      <li><strong class="yellow">Almost right</strong> — bird/airplane confusions: VLM correctly identifies the right failure class, but gets the specific visual reason wrong</li>
+      <li><strong class="yellow">Slightly wrong</strong> — aircraft carrier as airplane: structural reasoning holds up, but invents background details</li>
+      <li><strong class="red">Fully hallucinated</strong> — ship as truck: describes "uniform blue background," builds entire causal chain on it. Background is dark grey gravel.</li>
+    </ul>
+    <div class="highlight-box">The VLM produces <strong>fluent, structured, confident output</strong> — which makes hallucinations harder to catch, not easier. Prompt engineering and larger models are the next lever.</div>
   </div>
 
   <!-- 12. Improvements -->
@@ -440,11 +429,11 @@
     <div class="slide-label">What's Next</div>
     <h2>Planned improvements</h2>
     <ul class="bullets">
+      <li><strong>Better hypothesis prompts</strong> — describe what you see before reasoning; ask for explicit uncertainty; chain-of-thought grounding</li>
+      <li><strong>Larger VLM</strong> — qwen3-vl:72b or a cloud model; the 8b model hallucinates at a rate that limits downstream trust</li>
+      <li><strong>Wire human verdicts back in</strong> — filter noisy hypotheses before clustering; weight clusters by reviewer confidence</li>
       <li><strong>Iteration 2 training</strong> — run with head occlusion, background texture, crop augmentations; compare per-class F1 vs baseline</li>
-      <li><strong>Use human review verdicts</strong> — filter noisy hypotheses before clustering; weight clusters by reviewer confidence</li>
-      <li><strong>Cross-run comparison view</strong> — side-by-side cluster diff between baseline and iteration 2</li>
-      <li><strong>Dataset agnostic</strong> — decouple from CIFAR-10/ResNet-18; works on any dataset + model that outputs a failure set</li>
-      <li><strong>Investigate the 16 labeling errors</strong> — candidates for relabeling or removal from the training set</li>
+      <li><strong>Cross-run comparison</strong> — side-by-side cluster diff between baseline and iteration 2</li>
     </ul>
   </div>
 
@@ -453,12 +442,12 @@
     <div class="slide-label">Summary</div>
     <h2>Key takeaways</h2>
     <ul class="bullets">
-      <li>A structured hypothesis per failure (data / visual / fix) is more useful than aggregate metrics alone</li>
-      <li>Clustering those hypotheses on each axis independently surfaces patterns you can act on directly</li>
-      <li><strong>56% of failures were data quality issues</strong> — that's where the leverage is, not more training epochs</li>
-      <li>The analysis takes ~15 min to run locally on 150 failures; the output tells you exactly what to fix next</li>
+      <li>Structured per-failure hypotheses (data / visual / fix) + clustering is a sound architecture for error analysis</li>
+      <li><strong>Hypothesis generation is the hard part</strong> — the VLM hallucinates image details at a non-trivial rate, which limits how much you can trust individual hypotheses</li>
+      <li>Cluster-level signal can still be directionally useful even when per-image explanations are unreliable</li>
+      <li>Human review is not optional — it's the only way to know how much to trust the output</li>
     </ul>
-    <div class="highlight-box" style="margin-top: 32px;">Code and experiment results: <strong>github.com/akarshupadhyay/lens</strong> &nbsp;·&nbsp; Blog post: <strong>akarshupadhyay.com/writing</strong></div>
+    <div class="highlight-box" style="margin-top: 32px;">Code: <strong>github.com/uakarsh/lens</strong> &nbsp;·&nbsp; Full writeup: <strong>uakarsh.github.io/lens.html</strong></div>
   </div>
 
 </div><!-- /slide-area -->
